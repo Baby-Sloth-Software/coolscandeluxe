@@ -1,31 +1,29 @@
 class InvupdatesController < ApplicationController
   before_action :set_invupdate, only: [:show, :edit, :update, :destroy]
 
-  # GET /invupdates
-  # GET /invupdates.json
   def index
     @invupdates = Invupdate.all
   end
 
-  # GET /invupdates/1
-  # GET /invupdates/1.json
   def show
     #@invupdate = Invupdate.find_by(params[:id])
   end
 
-  # GET /invupdates/new
   def new
     @invupdate = Invupdate.new
   end
 
-  # GET /invupdates/1/edit
   def edit
   end
 
-  # POST /invupdates
-  # POST /invupdates.json
   def create
     @invupdate = Invupdate.new(invupdate_params)
+
+    #Define our value ranges
+    #Determine what color values are recieved
+    #compare them to our defined ranges
+    #return a color
+    #find product by color and subtract 1 from quantity
 
     respond_to do |format|
       if @invupdate.save
@@ -38,8 +36,6 @@ class InvupdatesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /invupdates/1
-  # PATCH/PUT /invupdates/1.json
   def update
     respond_to do |format|
       if @invupdate.update(invupdate_params)
@@ -52,8 +48,6 @@ class InvupdatesController < ApplicationController
     end
   end
 
-  # DELETE /invupdates/1
-  # DELETE /invupdates/1.json
   def destroy
     @invupdate.destroy
     respond_to do |format|
