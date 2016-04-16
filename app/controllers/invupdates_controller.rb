@@ -18,7 +18,7 @@ class InvupdatesController < ApplicationController
 
   def create
     @invupdate = Invupdate.new(invupdate_params)
-
+    @invupdate.save
     #Define our value ranges
     #Determine what color values are recieved
     #compare them to our defined ranges
@@ -35,14 +35,15 @@ class InvupdatesController < ApplicationController
     # product = Product.find_by(color: color)
     # product.update(quantity: product.quantity - 1 )
 
-    respond_to do |format|
-      if @invupdate.save
-        format.html { redirect_to @invupdate, notice: 'Invupdate was successfully created.' }
-        format.json { render :show, status: :created, location: @invupdate }
-      else
-        format.html { render :new }
-        format.json { render json: @invupdate.errors, status: :unprocessable_entity }
-      end
+    # respond_to do |format|
+    #   if @invupdate.save
+    #     #format.html { notice: 'Invupdate was successfully created.' }
+    #     format.json { render :show, status: :created, location: @invupdate }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @invupdate.errors, status: :unprocessable_entity }
+    #   end
+    render "show.json.jbuilder", status: :created
     end
   end
 
@@ -76,4 +77,4 @@ class InvupdatesController < ApplicationController
     def invupdate_params
       params.fetch(:invupdate, {})
     end
-end
+
