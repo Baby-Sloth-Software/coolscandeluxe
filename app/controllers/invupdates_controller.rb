@@ -10,6 +10,7 @@ class InvupdatesController < ApplicationController
   # GET /invupdates/1
   # GET /invupdates/1.json
   def show
+    #@invupdate = Invupdate.find_by(params[:id])
   end
 
   # GET /invupdates/new
