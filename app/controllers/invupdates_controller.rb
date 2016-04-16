@@ -24,16 +24,16 @@ class InvupdatesController < ApplicationController
     #compare them to our defined ranges
     #return a color
     #(@invupdate.c_value == int && @invupdate.r_value == int && @invupdate.g_value == int && @invupdate.b_value == int)
-    #find product by color and subtract 1 from quantity
-    if (@invupdate.c_value == [3301..3800])
-      color = "red"
-    elsif (@invupdate.c_value == [2800..3299])
-      color = "green"
-    elsif (@invupdate.c_value == [5700..6400])
-      color = "blue"
-    end
-    product = Product.find_by(color: color)
-    product.update(quantity: product.quantity - 1 )
+    # find product by color and subtract 1 from quantity
+    # if (@invupdate.c_value == [3301..3800])
+    #   color = "red"
+    # elsif (@invupdate.c_value == [2800..3299])
+    #   color = "green"
+    # elsif (@invupdate.c_value == [5700..6400])
+    #   color = "blue"
+    # end
+    # product = Product.find_by(color: color)
+    # product.update(quantity: product.quantity - 1 )
 
     respond_to do |format|
       if @invupdate.save
