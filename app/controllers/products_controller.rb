@@ -1,4 +1,4 @@
-class ProductController < ApplicationController
+class ProductsController < ApplicationController
   
   def index
 
@@ -31,7 +31,7 @@ class ProductController < ApplicationController
 
   def destroy
     product = Product.find(params[:id])
-    flash[:notice] = "The product has been removed from the inventory list."
+    flash[:notice] = "The products has been removed from the inventory list."
     product.destroy
   end
 end
