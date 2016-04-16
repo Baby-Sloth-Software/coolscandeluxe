@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unit_id: MyString
+  c_value: 1
+  r_value: 1
+  g_value: 1
+  b_value: 1
+
+two:
+  unit_id: MyString
+  c_value: 1
+  r_value: 1
+  g_value: 1
+  b_value: 1

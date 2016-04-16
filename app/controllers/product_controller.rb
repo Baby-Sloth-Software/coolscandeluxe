@@ -1,7 +1,7 @@
 class ProductController < ApplicationController
   
   def index
-    
+
   end
 
   def new
@@ -34,5 +34,4 @@ class ProductController < ApplicationController
     flash[:notice] = "The product has been removed from the inventory list."
     product.destroy
   end
-  redirect_to products_path
 end
