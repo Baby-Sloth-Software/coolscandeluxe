@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :products
+  root to: 'product#index'
+  resources :product
 
-  get "/products", to: "products#inventory"
+  #get "/products", to: "products#inventory"
 
 
 end
