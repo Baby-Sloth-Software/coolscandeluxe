@@ -1,0 +1,2 @@
+module InvupdatesHelper
+end

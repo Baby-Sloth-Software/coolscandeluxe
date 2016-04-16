@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   root to: 'products#index'
   resources :products
 
-  
-  #get "/products", to: products#index
-  #post "/products", to: products#create
-  #get "/products/new", to: products#new
-
+  get "/datadump", to: "invupdates#index"
+  post "/datadump", to: "invupdates#create"
+  delete "/datadump", to: "invupdates#destroy"
 end

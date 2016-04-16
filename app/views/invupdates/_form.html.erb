@@ -1,0 +1,17 @@
+<%= form_for(@invupdate) do |f| %>
+  <% if @invupdate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invupdate.errors.count, "error") %> prohibited this invupdate from being saved:</h2>
+
+      <ul>
+      <% @invupdate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
