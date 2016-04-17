@@ -19,7 +19,7 @@ class InvupdatesController < ApplicationController
   def create
     @invupdate = Invupdate.new(invupdate_params)
     @invupdate.save
-    product_color = Product.find_color_by_range(invupdate_params)
+    product_color = Product.find_product_by_range(invupdate_params)
     @product = Product.find_by_color(product_color)
     @product.quantity -= 1
     @product.save
