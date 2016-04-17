@@ -19,6 +19,10 @@ class InvupdatesController < ApplicationController
   def create
     @invupdate = Invupdate.new(invupdate_params)
     @invupdate.save
+    product_color = Product.find_color_by_range(invupdate_params)
+    @product = Product.find_by_color(product_color)
+    @product.quantity -= 1
+    @product.save
     #Define our value ranges
     #Determine what color values are recieved
     #compare them to our defined ranges
