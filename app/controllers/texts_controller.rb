@@ -10,7 +10,6 @@ class TextsController < ApplicationController
     #              "To"=>"+16787862528", "ToZip"=>"31901", "NumSegments"=>"1",
     #              "MessageSid"=>"SMecadf0061ffb938491ccfc1164a1e2fc", "AccountSid"=>"AC389ab8c76fd5d42343da183110d741e8",
     #              "From"=>"+14072837742", "ApiVersion"=>"2010-04-01"}
-    enable :sessions
 
     phone_number = params['From']
     customer = Customer.find_by_phone(phone_number)
