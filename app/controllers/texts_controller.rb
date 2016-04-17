@@ -15,7 +15,7 @@ class TextsController < ApplicationController
     customer = Customer.find_by_phone(phone_number)
 
     if customer.start?
-      product = Product.find_by_name(downcase(params['Body']))
+      product = Product.find_by_name(params['Body'].downcase)
       message = "Hey #{customer.first_name}!  It's great to hear that you need more #{product.name.titleize}.  Please reply 1 to CONFIRM or 2 to CANCEL."
       session['product'] = product.name.titleize
       customer.update(conversation_state: Customer.conversation_states[:determine_product], conversation_id: params['MessageSid'])
