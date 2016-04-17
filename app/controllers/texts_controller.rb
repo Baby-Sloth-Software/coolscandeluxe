@@ -32,9 +32,8 @@ class TextsController < ApplicationController
     elsif customer.product_confirmed?
       quantity = params['Body'].to_i
       product = Product.find_by_name(session['product'])
-
       customer.update(conversation_state: Customer.conversation_states[:order_confirmed], conversation_id: params['MessageSid'])
-      order = Order.create(customer: customer, product: product, quantity: quantity)
+      order = Order.create(customer_id: customer.id, product: product, quantity: quantity)
       message = "Order #{order.id} created for Product: #{product.name} - Quantity: #{quantity}.  Thanks for using StockMyCooler powered by Coca-Cola!"
     else
 
