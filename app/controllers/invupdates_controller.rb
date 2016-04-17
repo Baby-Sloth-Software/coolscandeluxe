@@ -21,8 +21,8 @@ class InvupdatesController < ApplicationController
     @invupdate.save
     product_color = Product.find_product_by_range(invupdate_params)
     @product = Product.find_by_color(product_color)
-    @product.quantity -= 1
-    @product.save
+    @product.quantity -= 1 unless @product.nil?
+    @product.save unless @product.nil?
     #Define our value ranges
     #Determine what color values are recieved
     #compare them to our defined ranges
