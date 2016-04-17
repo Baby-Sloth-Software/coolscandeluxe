@@ -14,12 +14,13 @@ class TextsController < ApplicationController
     phone_number = params['From']
     customer = Customer.find_by_phone(phone_number)
 
-    if customer.start?
-      product = Product.find_by_name(params['Body'].downcase)
+    if customer.start? || customer.conversation_state.nil? || customer.order_confirmed?
+      product = Product.find_by_name(params['Body'].titleize)
       message = "Hey #{customer.first_name}!  It's great to hear that you need more #{product.name.titleize}.  Please reply 1 to CONFIRM or 2 to CANCEL."
-      session['product'] = product.name.titleize
+      session['product'] = product.name
       customer.update(conversation_state: Customer.conversation_states[:determine_product], conversation_id: params['MessageSid'])
     elsif customer.determine_product?
+      product = Product.find_by_name(session['product'])
       response = params['Body'].to_i
       if response == 1
         customer.update(conversation_state: Customer.conversation_states[:product_confirmed], conversation_id: params['MessageSid'])
@@ -29,8 +30,13 @@ class TextsController < ApplicationController
         message = "Stock Request for #{session['product']} Cancelled."
       end
     elsif customer.product_confirmed?
+      quantity = params['Body'].to_i
+      product = Product.find_by_name(session['product'])
 
-    elsif customer.order_confirmed?
+      customer.update(conversation_state: Customer.conversation_states[:order_confirmed], conversation_id: params['MessageSid'])
+      order = Order.create(customer: customer, product: product, quantity: quantity)
+      message = "Order #{order.id} created for Product: #{product.name} - Quantity: #{quantity}.  Thanks for using StockMyCooler powered by Coca-Cola!"
+    else
 
     end
 
