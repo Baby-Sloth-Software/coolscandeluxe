@@ -76,5 +76,6 @@ class InvupdatesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def invupdate_params
       params.fetch(:invupdate, {})
+      params.permit(:unit_id, :c_value, :r_value, :g_value, :b_value)
     end
 
